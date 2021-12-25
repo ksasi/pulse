@@ -59,6 +59,7 @@ model = PULSE(cache_dir=kwargs["cache_dir"])
 model = DataParallel(model)
 
 toPIL = torchvision.transforms.ToPILImage()
+print("*********"
 
 for ref_im, ref_im_name in dataloader:
     if(kwargs["save_intermediate"]):
