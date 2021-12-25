@@ -18,7 +18,9 @@ class Images(Dataset):
 
     def __getitem__(self, idx):
         img_path = self.image_list[idx//self.duplicates]
-        image = torchvision.transforms.ToTensor()(Image.open(img_path))
+        img = Image.open(img_path)
+        img = img.resize((1024, 1024), Image.ANTIALIAS)
+        image = torchvision.transforms.ToTensor()(img)
         if(self.duplicates == 1):
             return image,img_path.stem
         else:
